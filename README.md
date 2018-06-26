@@ -1,6 +1,6 @@
 
 Welcome NodejS
-
+--------------
 
 Create Nodejs
 
@@ -33,7 +33,8 @@ nodemon
 
     Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. Install it using npm.
 
-    Features    
+    Features  
+    --------  
         Automatic restarting of application.
         Detects default file extension to monitor.
         Default support for node & coffeescript, but easy to run any executable (such as python, make, etc).
@@ -48,12 +49,14 @@ nodemon
 
 
 Express JS Install
+------------------
     
     Express.js, or simply Express, is a web application framework for Node.js,
     
     ExpressJS is a web application framework that provides you with a simple API to build websites, web apps and back ends. With ExpressJS, you need not worry about low level protocols, processes, etc.
 
     Installing
+    ----------
 
         Step -1 :
              Use the npm init command to create a package.json file for your application.
