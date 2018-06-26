@@ -10,7 +10,26 @@ function handleRequest(req, res) {
             break;
 
         case '/users':
-            res.write("Users List");
+
+            var usersList = [
+                {
+                    id: 1,
+                    name: "reprehenderit",
+                    desc: "est autem sunt rem eveniet architecto"
+                },
+                {
+                    id: 2,
+                    name: "quiee est",
+                    desc: "aperiam non debitis possimus qui neque nisi nulla"
+                },
+                {
+                    id: 3,
+                    name: "ipsaa sit",
+                    desc: "accusantium quis pariatur velit aut"
+                }
+            ];
+
+            res.write(JSON.stringify(usersList));
             res.end();
             break;
 
