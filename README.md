@@ -44,3 +44,28 @@ nodemon
         Open source and available on github.
 
    Install ->  "npm install -g nodemon"
+
+
+
+Express JS Install
+    
+    Express.js, or simply Express, is a web application framework for Node.js,
+    
+    ExpressJS is a web application framework that provides you with a simple API to build websites, web apps and back ends. With ExpressJS, you need not worry about low level protocols, processes, etc.
+
+    Installing
+
+        Step -1 :
+             Use the npm init command to create a package.json file for your application.
+
+                $ npm init 
+
+                Or
+
+                $ npm init - y
+
+        Step -2 :
+
+            Now install Express in the "node" directory and save it in the dependencies list
+
+            $ npm install express --save
