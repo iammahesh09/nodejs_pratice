@@ -2,6 +2,7 @@ var http = require('http');
 
 
 function handleRequest(req, res){
+    console.log(req.url);
     res.write("Hello NodeJS Web");
     res.end();
 }
