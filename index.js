@@ -3,6 +3,8 @@ var express = require('express');
 
 var productsCtrl = require('./controllers/products.ctrl');
 
+var defaultCtrl = require('./controllers/default.ctrl');
+
 var app = express();
 
 function callback() {
@@ -11,11 +13,9 @@ function callback() {
 
 app.listen(9001, callback);
 
-app.get('/', function(req, res){
-    res.send("Hello! ExpressJS");
-})
+app.get('/', defaultCtrl.get)
 
-app.get('/users', function(req, res){
+app.get('/users', function (req, res) {
     res.send('Show Users List');
 })
 

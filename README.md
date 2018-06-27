@@ -78,3 +78,67 @@ Express JS Install
 =>  'require' is "Global Scope"
 
     var express = require('express');
+
+
+create controllers folder
+
+
+    Create Object format Example
+    ----------------------------
+
+        product.ctrl.js
+
+            var productsCtrl= {
+                get:functon(req, res){
+                    var products = [
+                        {id:100, brand:"Nokia", model:'8', price:799, isStock:true},
+                        {id:200, brand:"Oneplus", model:'6', price:699, isStock:true}
+                    ]
+
+                    res.json(products)
+                }                
+            }
+
+            module.export = productsCtrl;
+
+        
+        index.js
+
+            var express = require('express');
+
+            var productsCtrl = require('./controllers/products.ctrl');
+
+            var app = express();
+
+            app.listen(9001, callback);
+
+            app.get('/products', productsCtrl.get)
+
+
+    Create Class format and convert object Example
+    ---------------------------------------------
+
+        product.ctrl.js
+
+            class defaultCtrl {
+                get(req, res) {
+                    res.send("Hello! ExpressJS");
+                }
+            }
+
+            module.exports = new defaultCtrl();
+
+        
+        index.js
+
+            var express = require('express');
+
+            var productsCtrl = require('./controllers/products.ctrl');
+
+            var app = express();
+
+            app.listen(9001, callback);
+
+            app.get('/products', productsCtrl.get)
+
+
