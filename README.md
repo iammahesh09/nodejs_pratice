@@ -72,3 +72,9 @@ Express JS Install
             Now install Express in the "node" directory and save it in the dependencies list
 
             $ npm install express --save
+
+
+
+=>  'require' is "Global Scope"
+
+    var express = require('express');
