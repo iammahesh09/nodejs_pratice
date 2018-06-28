@@ -37,6 +37,19 @@ var productCtrl = {
         
         res.status(201);
         res.send(req.body)
+    },
+
+    deleteProduct:function(req, res){
+        var id = req.params.id;
+
+        for(var i=0; i<products.length; i++){
+            if(products[i].id == id){
+                products.splice(i,1);
+            }
+        }
+
+        res.status(204); //No Content
+        res.send();
     }
 }
 
