@@ -14,5 +14,5 @@ function callback() {
 app.use(bodyParser.json());
 
 app.use('/', defaultRouter);
-app.use('/', productRouter);
+app.use('/api/products/', productRouter);
 app.listen(9001, callback);
