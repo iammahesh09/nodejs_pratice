@@ -41,10 +41,10 @@ var productCtrl = {
     },
 
     deleteProduct:function(req, res){
-        var id = req.params.id;
+        var id = +req.params.id;
 
         for(var i=0; i<products.length; i++){
-            if(products[i].id == id){
+            if(products[i].id === id){
                 products.splice(i,1);
             }
         }
