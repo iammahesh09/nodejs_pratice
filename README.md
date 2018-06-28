@@ -142,3 +142,12 @@ create controllers folder
             app.get('/products', productsCtrl.get)
 
 
+body-parser
+-----------
+    Node.js body parsing middleware.
+
+    body-parser extract the entire body portion of an incoming request stream and exposes it on req.body . The middleware was a part of Express.js earlier but now you have to install it separately. This body-parser module parses the JSON, buffer, string and URL encoded data submitted using HTTP POST request.
+
+    Installation
+    
+        $ npm install body-parser
