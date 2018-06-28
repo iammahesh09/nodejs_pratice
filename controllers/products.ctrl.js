@@ -12,7 +12,8 @@ var productCtrl = {
 
     getId: function (req, res) {
         
-        var id=parseInt(req.params.id);        
+        //var id=parseInt(req.params.id);        
+        var id=+req.params.id;        
         var product;
 
         for (var i = 0; i < products.length; i++) {
