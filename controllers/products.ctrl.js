@@ -1,22 +1,22 @@
-var products = [
+const products = [
     {id:100, brand:"Oneplus", model:'6', price:699, isStock:true},
     {id:200, brand:"Nokia", model:'8', price:799, isStock:true},
     {id:300, brand:"Apple", model:'X', price:949, isStock:true},
     {id:400, brand:"Samsung", model:'S8', price:899, isStock:true}
 ];
 
-var productCtrl = {
+const productCtrl = {
     get: (req, res) => {
         res.json(products)
     },
 
     getId: (req, res) => {
         
-        //var id=parseInt(req.params.id);        
-        var id=+req.params.id;        
-        var product;
+        //let id=parseInt(req.params.id);        
+        let id=+req.params.id;        
+        let product;
 
-        for (var i = 0; i < products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             if (products[i].id === id) {
                 product = products[i];
             }
@@ -41,9 +41,9 @@ var productCtrl = {
     },
 
     deleteProduct:(req, res)=>{
-        var id = +req.params.id;
+        let id = +req.params.id;
 
-        for(var i=0; i<products.length; i++){
+        for(let i=0; i<products.length; i++){
             if(products[i].id === id){
                 products.splice(i,1);
             }
@@ -55,10 +55,10 @@ var productCtrl = {
 
     updateProduct:(req, res)=>{
         
-        var id = +req.params.id;
-        var product;
+        let id = +req.params.id;
+        let product;
 
-        for(var i=0; i<products.length; i++){
+        for(let i=0; i<products.length; i++){
             if(products[i].id === id){
                 products[i].model = product.model;
                 products[i].brand = product.brand;

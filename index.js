@@ -1,12 +1,11 @@
 //This CommonJS pattren   (Angular -> ES6 Pattren)
-var express = require('express');
-var bodyParser = require('body-parser')
+const express = require('express');
+const bodyParser = require('body-parser')
 
-var app = express();
+const app = express();
 
 var defaultRouter = require('./routers/default.routes');
 var productRouter = require('./routers/product.router');
-
 
 
 app.use(bodyParser.json());
