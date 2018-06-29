@@ -7,12 +7,11 @@ var app = express();
 var defaultRouter = require('./routers/default.routes');
 var productRouter = require('./routers/product.router');
 
-function callback() {
-    console.log("Hello! ExpressJS, Server is running on port 9001")
-}
+
 
 app.use(bodyParser.json());
 
 app.use('/', defaultRouter);
 app.use('/api/products/', productRouter);
-app.listen(9001, callback);
+
+app.listen(9001, () => console.log("Hello! ExpressJS, Server is running on port 9001"));

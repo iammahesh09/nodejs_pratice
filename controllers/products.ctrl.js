@@ -6,11 +6,11 @@ var products = [
 ];
 
 var productCtrl = {
-    get: function (req, res) {
+    get: (req, res) => {
         res.json(products)
     },
 
-    getId: function (req, res) {
+    getId: (req, res) => {
         
         //var id=parseInt(req.params.id);        
         var id=+req.params.id;        
@@ -32,7 +32,7 @@ var productCtrl = {
 
     },
 
-    addProduct:function(req, res){
+    addProduct:(req, res)=>{
         
         products.push(req.body)
         
@@ -40,12 +40,30 @@ var productCtrl = {
         res.send(req.body)
     },
 
-    deleteProduct:function(req, res){
+    deleteProduct:(req, res)=>{
         var id = +req.params.id;
 
         for(var i=0; i<products.length; i++){
             if(products[i].id === id){
                 products.splice(i,1);
+            }
+        }
+
+        res.status(204); //No Content
+        res.send();
+    },
+
+    updateProduct:(req, res)=>{
+        
+        var id = +req.params.id;
+        var product;
+
+        for(var i=0; i<products.length; i++){
+            if(products[i].id === id){
+                products[i].model = product.model;
+                products[i].brand = product.brand;
+                products[i].price = product.price;
+                products[i].isStock = product.isStock;
             }
         }
 
