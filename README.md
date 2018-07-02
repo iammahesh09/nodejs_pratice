@@ -151,3 +151,75 @@ body-parser
     Installation
     
         $ npm install body-parser
+
+
+
+
+
+
+
+
+
+MongoDB
+-------
+
+    install MongoDb and 
+
+        1.Start MongoDB.
+
+            > "C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe"
+
+
+        2. Verify that MongoDB has started successfully
+
+            check - [initandlisten] waiting for connections on port 27017
+
+
+        3. Connect to MongoDB
+
+            > "C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe"
+            
+            
+            Set 
+            ---
+                Go to Control Panel > "System & Security" > "System" > "Advanced System Settings" > "Environment Variables" > navigate to the Path variable hit "Edit" and "add" ; 
+                
+                C:\Program Files\MongoDB\Server\4.0\bin" to the Path (or whatever the directory name is where MongoDB is located (the semi-colon delimits each directory).
+
+            
+        After
+        -----
+            > net start Mongodb    -> start Admin level
+            
+            > mongo
+            
+            
+            
+            stop  mongodb
+            --------------
+                > net stop mongodb
+
+
+
+Connecting MongoDB to Node
+---------------------------
+
+    use Mongoose 
+    
+        - Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
+
+    
+    install Mongoose
+
+        $ npm install mongoose
+
+    
+        Importing
+
+            // Using Node.js `require()`
+            const mongoose = require('mongoose');
+
+
+            mongoose.connect("mongodb://localhost:27017", () => console.log("DB Conneted"));
+
+

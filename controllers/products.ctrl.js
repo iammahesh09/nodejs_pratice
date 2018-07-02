@@ -1,13 +1,19 @@
-const products = [
-    {id:100, brand:"Oneplus", model:'6', price:699, isStock:true},
-    {id:200, brand:"Nokia", model:'8', price:799, isStock:true},
-    {id:300, brand:"Apple", model:'X', price:949, isStock:true},
-    {id:400, brand:"Samsung", model:'S8', price:899, isStock:true}
-];
+const Product = require('../models/products.model');
+
 
 const productCtrl = {
     get: (req, res) => {
-        res.json(products)
+
+        Product.find(function(error, products){
+
+            if(error){
+                res.send("Internal Server Error");
+            }else{
+                res.status(200);
+                res.json(products);
+            }
+        });
+
     },
 
     getId: (req, res) => {
