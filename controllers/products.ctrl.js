@@ -4,11 +4,12 @@ const Product = require('../models/products.model');
 const productCtrl = {
     get: (req, res) => {
 
-        Product.find(function(error, products){
+        Product.find(function (error, products) {
 
-            if(error){
+            if (error) {
+                res.status(500);
                 res.send("Internal Server Error");
-            }else{
+            } else {
                 res.status(200);
                 res.json(products);
             }
@@ -17,9 +18,9 @@ const productCtrl = {
     },
 
     getId: (req, res) => {
-        
+
         //let id=parseInt(req.params.id);        
-        let id=+req.params.id;        
+        let id = +req.params.id;
         let product;
 
         for (let i = 0; i < products.length; i++) {
@@ -28,30 +29,38 @@ const productCtrl = {
             }
         }
 
-        if(product){   
+        if (product) {
             res.status(200);
             res.json(product);
-        }else{
+        } else {
             res.status(500);
             res.send("Not Found")
         }
 
     },
 
-    addProduct:(req, res)=>{
-        
-        products.push(req.body)
-        
-        res.status(201);
-        res.send(req.body)
+    addProduct: (req, res) => {
+
+        let products = new Product(req.body);
+
+        products.save(function (error, saveProduct) {
+            if (error) {
+                res.status(500);
+                res.send("Internal Server Error");
+            } else {
+                res.status(200);
+                res.json(products);
+            }
+        })
+
     },
 
-    deleteProduct:(req, res)=>{
+    deleteProduct: (req, res) => {
         let id = +req.params.id;
 
-        for(let i=0; i<products.length; i++){
-            if(products[i].id === id){
-                products.splice(i,1);
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].id === id) {
+                products.splice(i, 1);
             }
         }
 
@@ -59,13 +68,13 @@ const productCtrl = {
         res.send();
     },
 
-    updateProduct:(req, res)=>{
-        
+    updateProduct: (req, res) => {
+
         let id = +req.params.id;
         let product;
 
-        for(let i=0; i<products.length; i++){
-            if(products[i].id === id){
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].id === id) {
                 products[i].model = product.model;
                 products[i].brand = product.brand;
                 products[i].price = product.price;
