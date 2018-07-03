@@ -56,9 +56,9 @@ const productCtrl = {
     },
 
     deleteProduct: (req, res) => {
-        let id = +req.params.id;
+        let id = req.params.id;
 
-        let product = new Product(id, function (error) {
+       Product.findByIdAndRemove(id, function (error) {
             if (error) {
                 res.status(500);
                 res.send("Internal Server Error")
