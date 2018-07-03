@@ -4,69 +4,51 @@ const Product = require('../models/products.model');
 const productCtrl = {
     get: (req, res) => {
 
-        Product.find(function (error, products) {
-
-            if (error) {
-                res.status(500);
-                res.send("Internal Server Error");
-            } else {
-                res.status(200);
-                res.json(products);
-            }
-        });
-
+        Product.find().exec()
+            .then(function (products) {
+                res.status(200).json(products);
+            })
+            .catch(function (error) {
+                res.status(500).send("Internal Server Error");
+            })
     },
 
     getId: (req, res) => {
 
-        //let id=parseInt(req.params.id);        
         let id = req.params.id;
 
-        //Product.findById(id, function (error, product) {   // this is one option
-        Product.findOne({
-            _id: id
-        }, function (error, product) {
-            if (product) {
-                res.status(200);
-                res.send(product)
-            } else {
-                res.status(404);
-                res.send("Not Found")
-            }
-        })
-
-
+        Product.findById(id).exec()
+            .then(function (product) {
+                res.status(200).send(product)
+            })
+            .catch(function () {
+                res.status(404).send("Not Found")
+            })
     },
 
     addProduct: (req, res) => {
 
-        let products = new Product(req.body);
+        var product = new Product(req.body);
 
-        products.save(function (error, saveProduct) {
-            if (error) {
-                res.status(500);
-                res.send("Internal Server Error");
-            } else {
-                res.status(200);
-                res.json(products);
-            }
-        })
-
+        product.save()
+            .then(function (saveProduct) {
+                res.status(201).json(saveProduct);
+            })
+            .catch(function (error) {
+                res.status(500).send(error);
+            })
     },
 
     deleteProduct: (req, res) => {
         let id = req.params.id;
 
-        Product.findByIdAndRemove(id, function (error) {
-            if (error) {
-                res.status(500);
-                res.send("Internal Server Error")
-            } else {
-                res.status(204); //No Content
-                res.send();
-            }
-        });
-
+        Product.findByIdAndRemove(id).exec()
+            .then(function (product) {
+                res.status(204).send(product);
+            })
+            .catch(function (error) {
+                res.status(500).send("Internal Server Error")
+            })
     },
 
     updateProduct: (req, res) => {
@@ -85,14 +67,11 @@ const productCtrl = {
                 res.status(200);
                 res.send(product)
             } else {
-                res.status(404);
-                res.send("Updated")
+                res.status(204); //No Content
+                res.send();
             }
         })
 
-
-        res.status(204); //No Content
-        res.send();
     },
 
     patchData: (req, res) => {
@@ -116,6 +95,7 @@ const productCtrl = {
             }
         })
     }
+    
 }
 
 

@@ -223,3 +223,52 @@ Connecting MongoDB to Node
             mongoose.connect("mongodb://localhost:27017", () => console.log("DB Conneted"));
 
 
+    GET — retrieve a particular resource’s object or list all objects
+
+    POST — create a new resource’s object
+
+    PATCH — make a partial update to a particular resource’s object
+
+    PUT — completely overwrite a particular resource’s object
+
+    DELETE — remove a particular resource’s object
+
+
+
+
+change callback's to promises
+-----------------------------
+
+    In real time 3rd party plagins prefer to "Promises"
+
+    Ex:-  
+    
+    get: (req, res) => {
+        //Callback using
+        Product.find(function (error, products) {
+
+            if (error) {
+                res.status(500);
+                res.send("Internal Server Error");
+            } else {
+                res.status(200);
+                res.json(products);
+            }
+        });
+
+    },
+
+
+    get: (req, res) => {
+
+        //Promises using        
+        Product.find().exec()
+            .then(function (products) {
+                res.status(200);
+                res.json(products);
+            })
+            .catch(function (error) {
+                res.status(500);
+                res.send("Internal Server Error");
+            })
+    },
