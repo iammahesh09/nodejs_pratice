@@ -22,7 +22,10 @@ const productCtrl = {
         //let id=parseInt(req.params.id);        
         let id = req.params.id;
 
-        Product.find({_id: id}, function (error, product) {
+        //Product.findById(id, function (error, product) {   // this is one option
+        Product.findOne({
+            _id: id
+        }, function (error, product) {
             if (product) {
                 res.status(200);
                 res.send(product)
@@ -68,17 +71,25 @@ const productCtrl = {
 
     updateProduct: (req, res) => {
 
-        let id = +req.params.id;
-        let product;
+        let id = req.params.id;
 
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id === id) {
-                products[i].model = product.model;
-                products[i].brand = product.brand;
-                products[i].price = product.price;
-                products[i].isStock = product.isStock;
+        Product.findByIdAndUpdate(id, {
+            $set: {
+                brand: req.body.brand,
+                model: req.body.model,
+                price: req.body.price,
+                inStock: req.body.inStock
             }
-        }
+        }, function (error, product) {
+            if (product) {
+                res.status(200);
+                res.send(product)
+            } else {
+                res.status(404);
+                res.send("Updated")
+            }
+        })
+
 
         res.status(204); //No Content
         res.send();
