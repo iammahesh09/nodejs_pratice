@@ -5,12 +5,8 @@ const productCtrl = {
     get: (req, res) => {
 
         Product.find().exec()
-            .then(function (products) {
-                res.status(200).json(products);
-            })
-            .catch(function (error) {
-                res.status(500).send("Internal Server Error");
-            })
+            .then((products) => res.status(200).json(products))
+            .catch((error) => res.status(500).send("Internal Server Error"))
     },
 
     getId: (req, res) => {
@@ -18,12 +14,8 @@ const productCtrl = {
         let id = req.params.id;
 
         Product.findById(id).exec()
-            .then(function (product) {
-                res.status(200).send(product)
-            })
-            .catch(function () {
-                res.status(404).send("Not Found")
-            })
+            .then((product) => res.status(200).send(product))
+            .catch((error) => res.status(404).send("Not Found"))
     },
 
     addProduct: (req, res) => {
@@ -31,24 +23,16 @@ const productCtrl = {
         var product = new Product(req.body);
 
         product.save()
-            .then(function (saveProduct) {
-                res.status(201).json(saveProduct);
-            })
-            .catch(function (error) {
-                res.status(500).send(error);
-            })
+            .then((saveProduct) => res.status(201).json(saveProduct))
+            .catch((error) => res.status(500).send(error))
     },
 
     deleteProduct: (req, res) => {
         let id = req.params.id;
 
         Product.findByIdAndRemove(id).exec()
-            .then(function (product) {
-                res.status(204).send(product);
-            })
-            .catch(function (error) {
-                res.status(500).send("Internal Server Error")
-            })
+            .then((product) => res.status(204).send(product))
+            .catch((error) => res.status(500).send("Internal Server Error"))
     },
 
     updateProduct: (req, res) => {
@@ -95,7 +79,7 @@ const productCtrl = {
             }
         })
     }
-    
+
 }
 
 
