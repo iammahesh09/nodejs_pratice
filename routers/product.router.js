@@ -9,5 +9,6 @@ routes.get('/:id', productsCtrl.getId);
 routes.post('/', productsCtrl.addProduct);
 routes.delete('/:id', productsCtrl.deleteProduct);
 routes.put('/:id', productsCtrl.updateProduct);
+routes.patch('/:id', productsCtrl.patchData);
 
 module.exports = routes;
