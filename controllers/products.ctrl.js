@@ -58,14 +58,16 @@ const productCtrl = {
     deleteProduct: (req, res) => {
         let id = +req.params.id;
 
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id === id) {
-                products.splice(i, 1);
+        let product = new Product(id, function (error) {
+            if (error) {
+                res.status(500);
+                res.send("Internal Server Error")
+            } else {
+                res.status(204); //No Content
+                res.send();
             }
-        }
+        });
 
-        res.status(204); //No Content
-        res.send();
     },
 
     updateProduct: (req, res) => {
