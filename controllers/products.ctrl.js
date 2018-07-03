@@ -20,22 +20,18 @@ const productCtrl = {
     getId: (req, res) => {
 
         //let id=parseInt(req.params.id);        
-        let id = +req.params.id;
-        let product;
+        let id = req.params.id;
 
-        for (let i = 0; i < products.length; i++) {
-            if (products[i].id === id) {
-                product = products[i];
+        Product.find({_id: id}, function (error, product) {
+            if (product) {
+                res.status(200);
+                res.send(product)
+            } else {
+                res.status(404);
+                res.send("Not Found")
             }
-        }
+        })
 
-        if (product) {
-            res.status(200);
-            res.json(product);
-        } else {
-            res.status(500);
-            res.send("Not Found")
-        }
 
     },
 
@@ -58,7 +54,7 @@ const productCtrl = {
     deleteProduct: (req, res) => {
         let id = req.params.id;
 
-       Product.findByIdAndRemove(id, function (error) {
+        Product.findByIdAndRemove(id, function (error) {
             if (error) {
                 res.status(500);
                 res.send("Internal Server Error")
