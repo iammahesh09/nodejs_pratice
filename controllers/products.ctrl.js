@@ -1,12 +1,16 @@
 const Product = require('../models/products.model');
-
+const productService = require('../services/product.services')
 
 const productCtrl = {
-    get: (req, res) => {
+    get: async (req, res) => {
 
-        Product.find().exec()
-            .then((products) => res.status(200).json(products))
-            .catch((error) => res.status(500).send("Internal Server Error"))
+        try{
+            let product = await productService.getProduct()
+            res.status(200).json(product)
+        }
+        catch(err){
+            res.status(500).send("Internal Server Error")
+        }
     },
 
     getId: (req, res) => {
