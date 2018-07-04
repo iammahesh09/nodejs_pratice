@@ -49,26 +49,19 @@ const productCtrl = {
         }
     },
 
-    updateProduct: (req, res) => {
+    updateProduct:async (req, res) => {
 
-        let id = req.params.id;
+        try{
+            let id = req.params.id;
 
-        Product.findByIdAndUpdate(id, {
-            $set: {
-                brand: req.body.brand,
-                model: req.body.model,
-                price: req.body.price,
-                inStock: req.body.inStock
-            }
-        }, function (error, product) {
-            if (product) {
-                res.status(200);
-                res.send(product)
-            } else {
-                res.status(204); //No Content
-                res.send();
-            }
-        })
+            let product = await productService.updateProduct(id, req.body)
+            res.status(200);
+            res.send(product)
+        }
+        catch(error){
+            res.status(204); //No Content
+            res.send();
+        }
 
     },
 

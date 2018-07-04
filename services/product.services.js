@@ -19,9 +19,13 @@ class ProductServices{
     }
 
     updateProduct(id, data){
-        return Product.findByIdAndUpdate(id, data)
+        return Product.findByIdAndUpdate(id, {$set: {
+            brand: data.brand,
+            model: data.model,
+            price: data.price,
+            inStock: data.inStock
+        }}).exec()
     }   
-
 
 
 }
