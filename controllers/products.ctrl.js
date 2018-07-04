@@ -33,7 +33,7 @@ const productCtrl = {
             res.status(201).json(saveProduct)
         }
         catch(error){
-            res.status(500).send(error)
+            res.status(500).send("Internal Server Error")
         }
     },
 
@@ -60,7 +60,7 @@ const productCtrl = {
         }
         catch(error){
             res.status(204); //No Content
-            res.send();
+            res.send(error);
         }
 
     },
