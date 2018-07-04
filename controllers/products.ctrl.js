@@ -37,11 +37,11 @@ const productCtrl = {
         }
     },
 
-    deleteProduct: (req, res) => {
+    deleteProduct: async (req, res) => {
         try{
             let id = req.params.id;
 
-            let rmProduct = productService.removeProduct(id)
+            let rmProduct =await productService.removeProduct(id)
             res.status(204).send(rmProduct)
         }
         catch(error){
