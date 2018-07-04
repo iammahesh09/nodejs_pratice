@@ -3,19 +3,19 @@ const mongoose = require('mongoose');
 module.exports = mongoose.model("products", {
     brand: {
         type: String,
-        required: true
+        required: [true, "Brand is required"]
     },
     model: {
         type: String,
-        required: true
+        required: [true, "Model is required"]
     },
     price: {
         type: Number,
-        required: true
+        required: [true, "Price is required"]
     },
     isStock: {
         type: Boolean,
-        default:false
+        default: false
     },
     lastUpdated: {
         type: Date,
