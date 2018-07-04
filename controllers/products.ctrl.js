@@ -26,21 +26,27 @@ const productCtrl = {
 
     },
 
-    addProduct: (req, res) => {
+    addProduct: async (req, res) => {
 
-        var product = new Product(req.body);
-
-        product.save()
-            .then((saveProduct) => res.status(201).json(saveProduct))
-            .catch((error) => res.status(500).send(error))
+        try{
+            let saveProduct =await productService.createProduct(req.body)
+            res.status(201).json(saveProduct)
+        }
+        catch(error){
+            res.status(500).send(error)
+        }
     },
 
     deleteProduct: (req, res) => {
-        let id = req.params.id;
+        try{
+            let id = req.params.id;
 
-        Product.findByIdAndRemove(id).exec()
-            .then((product) => res.status(204).send(product))
-            .catch((error) => res.status(500).send("Internal Server Error"))
+            let rmProduct = productService.removeProduct(id)
+            res.status(204).send(rmProduct)
+        }
+        catch(error){
+            res.status(500).send("Internal Server Error")
+        }
     },
 
     updateProduct: (req, res) => {
