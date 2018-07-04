@@ -2,8 +2,12 @@ const Product = require('../models/products.model');
 
 class ProductServices{
 
-    getProduct(id){
+    getProduct(){
         return Product.find().exec()
+    }
+
+    getProductId(id){
+        return Product.findById(id).exec()
     }
 
 }

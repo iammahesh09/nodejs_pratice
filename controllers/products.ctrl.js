@@ -13,13 +13,17 @@ const productCtrl = {
         }
     },
 
-    getId: (req, res) => {
+    getId: async (req, res) => {
 
-        let id = req.params.id;
+        try{
+            let id = req.params.id;
+            let product = await productService.getProductId(id)
+            res.status(200).send(product)
+        }
+        catch(error){
+            res.status(404).send("Not Found")
+        }
 
-        Product.findById(id).exec()
-            .then((product) => res.status(200).send(product))
-            .catch((error) => res.status(404).send("Not Found"))
     },
 
     addProduct: (req, res) => {
