@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-function priceValidator {
+function priceValidator() {
     return value >= 100;
 }
 
