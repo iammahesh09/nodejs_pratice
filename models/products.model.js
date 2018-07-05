@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
+function priceValidator {
+    return value >= 100;
+}
+
 module.exports = mongoose.model("products", {
     brand: {
         type: String,
-        required: [true, "Brand is required"]
+        required: [true, "Brand is required"],
+        min: 2,
+        max:20
     },
     model: {
         type: String,
@@ -11,7 +17,10 @@ module.exports = mongoose.model("products", {
     },
     price: {
         type: Number,
-        required: [true, "Price is required"]
+        required: [true, "Price is required"],
+        validate: {
+            validator: priceValidator
+        }
     },
     isStock: {
         type: Boolean,
