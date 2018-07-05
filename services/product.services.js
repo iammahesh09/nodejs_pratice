@@ -27,6 +27,17 @@ class ProductServices{
         }}).exec()
     }   
 
+    patchProduct(id, data) {
+        Product.findById(id, function (err, product) {
+          if (product) {
+            for (var key in data) {
+              product[key] = data[key];
+            }
+            return Product.findByIdAndUpdate(id, product).exec();
+          }
+        });
+      }
+
 
 }
 

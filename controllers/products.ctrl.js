@@ -65,26 +65,12 @@ const productCtrl = {
 
     },
 
-    patchData: (req, res) => {
+    patchData:async (req, res) => {
 
         let id = req.params.id;
         delete req.params._id;
-
-        Product.findById(id, function (error, product) {
-            if (product) {
-                for (var key in req.body) {
-                    product[key] = req.body[key];
-                }
-
-                Product.findByIdAndUpdate(id, product, function (err) {
-                    res.status(204);
-                    res.send()
-                });
-            } else {
-                res.status(404);
-                res.send("Not Found")
-            }
-        })
+        await productSvc.patch(id, req.body);
+        res.status(204).send();
     }
 
 }
