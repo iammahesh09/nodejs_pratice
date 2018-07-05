@@ -13,7 +13,30 @@ app.use(bodyParser.json());
 
 mongoose.connect("mongodb://localhost:27017/products", () => console.log("DB Conneted"));
 
+
+//Public
 app.use('/', defaultRouter);
+
+function basicAuthentication(req, res, next) {
+
+    let credentials = req.headers["authorization"];
+    let tokens = credentials.split(":")
+
+    let username = tokens[0];
+    let password = tokens[1];
+
+    if (username === "admin" && password === "password") {
+        next()
+    } else {
+        res.status('404');
+        res.send("Unauthorization")
+    }
+}
+
+//this middleware 
+app.use(basicAuthentication)    // secure page 'productRouter'  only. if in case you have using 'defaultRouter' page upper, apply secure defaultRouter 
+
+//Private
 app.use('/api/products/', productRouter);
 
 app.listen(9001, () => console.log("Hello! ExpressJS, Server is running on port 9001"));
