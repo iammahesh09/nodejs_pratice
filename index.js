@@ -19,8 +19,15 @@ app.use('/', defaultRouter);
 
 function basicAuthentication(req, res, next) {
 
-    let credentials = req.headers["authorization"];
-    let tokens = credentials.split(":")
+    let base64String = req.headers["authorization"].replace("Basic ", "");
+
+    console.log(base64String);
+
+    let decodeString = new Buffer.from(base64String, 'base64').toString();
+
+    console.log(decodeString);
+
+    let tokens = decodeString.split(":")
 
     let username = tokens[0];
     let password = tokens[1];
@@ -34,7 +41,7 @@ function basicAuthentication(req, res, next) {
 }
 
 //this middleware 
-app.use(basicAuthentication)    // secure page 'productRouter'  only. if in case you have using 'defaultRouter' page upper, apply secure defaultRouter 
+app.use(basicAuthentication) // secure page 'productRouter'  only. if in case you have using 'defaultRouter' page upper, apply secure defaultRouter 
 
 //Private
 app.use('/api/products/', productRouter);
