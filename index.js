@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 
+//Basic authorization
+const middleware = require('./authorization/basicAuth')
+
 const app = express();
 
 var defaultRouter = require('./routers/default.routes');
@@ -17,31 +20,9 @@ mongoose.connect("mongodb://localhost:27017/products", () => console.log("DB Con
 //Public
 app.use('/', defaultRouter);
 
-function basicAuthentication(req, res, next) {
-
-    let base64String = req.headers["authorization"].replace("Basic ", "");
-
-    console.log(base64String);
-
-    let decodeString = new Buffer.from(base64String, 'base64').toString();
-
-    console.log(decodeString);
-
-    let tokens = decodeString.split(":")
-
-    let username = tokens[0];
-    let password = tokens[1];
-
-    if (username === "admin" && password === "password") {
-        next()
-    } else {
-        res.status('404');
-        res.send("Unauthorization")
-    }
-}
 
 //this middleware 
-app.use(basicAuthentication) // secure page 'productRouter'  only. if in case you have using 'defaultRouter' page upper, apply secure defaultRouter 
+app.use(middleware.basicAuthentication) // secure page 'productRouter'  only. if in case you have using 'defaultRouter' page upper, apply secure defaultRouter 
 
 //Private
 app.use('/api/products/', productRouter);
