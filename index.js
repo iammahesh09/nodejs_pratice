@@ -17,6 +17,9 @@ const middleware = require('./authorization/tokenAuth')
 //user router
 const userRouter = require('./routers/user.routes');
 
+//Review Router
+const reviewRouter = require('./routers/review.router');
+
 app.use(bodyParser.json());
 
 mongoose.connect("mongodb://localhost:27017/products", () => console.log("DB Conneted"));
@@ -36,5 +39,8 @@ app.use(middleware.tokenAuth)
 
 //Private
 app.use('/api/products', productRouter);
+
+//Private
+app.use('/api/reviews', reviewRouter)
 
 app.listen(9001, () => console.log("Hello! ExpressJS, Server is running on port 9001"));
