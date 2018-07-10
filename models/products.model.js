@@ -22,7 +22,7 @@ module.exports = mongoose.model("products", {
             validator: priceValidator
         }
     },
-    isStock: {
+    inStock: {
         type: Boolean,
         default: false
     },

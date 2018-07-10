@@ -272,3 +272,46 @@ change callback's to promises
                 res.send("Internal Server Error");
             })
     },
+
+
+
+Token Base Authentication
+-------------------------
+
+    1. First Set model
+
+    2. Create User Service
+
+    3. Create User Controller
+
+    4. set middile ware in index,js
+
+
+    5. create user register  method in user
+
+        5.1 convert password encrypt(hashing) type
+
+            Install -> npm install --save bcryptjs
+            
+                Fallow : https://www.npmjs.com/package/bcrypt
+
+                
+                note :  password protect encrypt and hashing
+                        hashing     -> more secure
+                        encryption
+
+                        http://www.differencebetween.info/difference-between-hashing-and-encryption
+
+                        https://www.quora.com/What-is-the-difference-between-hashing-and-encryption
+
+    6. create user login  method in user
+
+    7. Create web token
+
+        install - npm i jsonwebtoken
+
+           Fallow : https://www.npmjs.com/package/jsonwebtoken
+
+
+
+
