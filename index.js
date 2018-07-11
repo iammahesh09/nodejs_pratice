@@ -47,4 +47,4 @@ app.use('/api/reviews', reviewRouter)
 
 let PORT = process.env.PORT || 9001
 
-app.listen(PORT, () => console.log("Hello! ExpressJS, Server is running on port 9001"));
+app.listen(PORT, () => console.log(`Hello! ExpressJS, Server is running on port ${PORT}`));
