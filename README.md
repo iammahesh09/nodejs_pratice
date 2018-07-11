@@ -315,3 +315,21 @@ Token Base Authentication
 
 
 
+mlab - Database
+---------------
+    create database and user permistions
+
+    connect databse
+
+        To connect using the mongo shell:
+            
+             => mongo ds135061.mlab.com:35061/mobile-products -u <dbuser> -p <dbpassword>
+        
+        To connect using a driver via the standard MongoDB URI (what's this?):
+
+            => mongodb://<dbuser>:<dbpassword>@ds135061.mlab.com:35061/mobile-products
+
+config Database
+---------------
+
+    change localhost database connection to mlab database

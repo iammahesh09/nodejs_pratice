@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 
 const app = express();
+const config = require('./config')
 
 var defaultRouter = require('./routers/default.routes');
 var productRouter = require('./routers/product.router');
@@ -22,7 +23,7 @@ const reviewRouter = require('./routers/review.router');
 
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://localhost:27017/products", () => console.log("DB Conneted"));
+mongoose.connect(config.connectUrl, () => console.log("DB Conneted"));
 
 
 //Public

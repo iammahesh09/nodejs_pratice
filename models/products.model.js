@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 function priceValidator() {
-    return value >= 100;
+   // return value >= 100;
 }
 
 module.exports = mongoose.model("products", {
@@ -24,7 +24,7 @@ module.exports = mongoose.model("products", {
     },
     inStock: {
         type: Boolean,
-        default: false
+        default: true
     },
     lastUpdated: {
         type: Date,
