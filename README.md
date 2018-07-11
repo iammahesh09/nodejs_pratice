@@ -350,3 +350,11 @@ PORT Environments
     var port = process.env.port || 3000;
 
     app.listen(port);
+
+
+
+Deployment Ready
+----------------
+    - first set PORT
+    - set "node index.js" start script
+    - set engines -- what is use node verstion
