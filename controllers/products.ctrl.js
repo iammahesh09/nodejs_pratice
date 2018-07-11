@@ -23,8 +23,7 @@ const productCtrl = {
             //immutable
             let jsonProduct = product.toJSON();
             jsonProduct.reviews=reviews;
-            console.log(jsonProduct)
-  
+ 
             res.status(200);
             res.json(jsonProduct);
 
