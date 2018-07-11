@@ -1,6 +1,6 @@
-const Product = require('../models/products.model');
-const Review = require('../models/review.model');
-const productService = require('../services/product.services')
+
+const productService = require('../services/product.services');
+const reviewService = require('../services/review.services');
 
 const productCtrl = {
     get: async (req, res) => {
@@ -18,20 +18,19 @@ const productCtrl = {
 
         try{
             let id = req.params.id;
-            let product = await productService.getProductId(id)
+            let product = await productService.getProductId(id);
+            let reviews = await reviewService.readReviews(id);
+            //immutable
+            let jsonProduct = product.toJSON();
+            jsonProduct.reviews=reviews;
+            console.log(jsonProduct)
+  
+            res.status(200);
+            res.json(jsonProduct);
 
-            Review.find({productId:id},{ __v:0, productId:0, _id:0 }).exec()
-                .then(function(reviews){
-                    //immutable
-                    let jsonProduct = product.toJSON();
-
-                    jsonProduct.reviews=reviews;
-
-                    res.status(200).json(jsonProduct)
-                })
         }
         catch(error){
-            res.status(404).send("Not Found")
+            res.status(500).send("Internal Server error")
         }
 
     },

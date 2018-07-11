@@ -6,8 +6,8 @@ class reviewService {
         return Review.create(data)
     }
 
-    readReviews() {
-        return Review.find().exec()
+    readReviews(id) {
+        return Review.find( { productId : id },{ __v:0, _id:0 }).exec()
     }
 
     updateReview(id, data) {
