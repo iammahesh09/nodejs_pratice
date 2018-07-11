@@ -29,5 +29,8 @@ module.exports = mongoose.model("products", {
     lastUpdated: {
         type: Date,
         default: Date.now
+    },
+    model_image:{
+        type: String
     }
 })

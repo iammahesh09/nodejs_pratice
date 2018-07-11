@@ -358,3 +358,14 @@ Deployment Ready
     - first set PORT
     - set "node index.js" start script
     - set engines -- what is use node verstion
+
+
+
+Files upload
+------------
+
+    Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. 
+    
+        $ npm install --save multer
+
+            Follow - https://www.npmjs.com/package/multer

@@ -2,6 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
+const multer = require('multer')
+
 
 const app = express();
 const config = require('./config')
@@ -24,6 +26,34 @@ const reviewRouter = require('./routers/review.router');
 app.use(bodyParser.json());
 
 mongoose.connect(config.connectUrl, () => console.log("DB Conneted"));
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // this is files location path
+        cb(null, 'FilesDrive')
+    },
+    filename: function (req, file, cb) {
+        // this is upload file name change fieldname and date
+        //cb(null, file.fieldname + '-' + Date.now())
+
+       // this is upload file original name
+       let file_name = Date.now()+'-'+file.originalname
+        cb(null, file_name)
+    }
+})
+
+let upload = multer({
+    storage: storage
+})
+
+//Ex Syntax
+//app.get('/route', middleware, handlar)
+
+// "model_image" is model key and FilesDrive is Files upload path
+app.post('/upload', upload.single('model_image'), function (req, res) {
+    res.status(201).send("File Uploaed")
+})
 
 
 //Public
