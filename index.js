@@ -44,4 +44,7 @@ app.use('/api/products', productRouter);
 //Private
 app.use('/api/reviews', reviewRouter)
 
-app.listen(9001, () => console.log("Hello! ExpressJS, Server is running on port 9001"));
+
+let PORT = process.env.PORT || 9001
+
+app.listen(PORT, () => console.log("Hello! ExpressJS, Server is running on port 9001"));

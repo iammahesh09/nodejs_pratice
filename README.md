@@ -333,3 +333,20 @@ config Database
 ---------------
 
     change localhost database connection to mlab database
+
+
+
+PORT Environments
+-----------------
+    In many environments (e.g. Heroku), and as a convention, you can set the environment variable PORT to tell your web server what port to listen on.
+
+    So "process.env.PORT || 3000" means: whatever is in the environment variable PORT, or 3000 if there's nothing there.
+
+    So you pass that app.listen, or to app.set('port', ...), and that makes your server be able to accept a parameter from the environment what port to listen on.
+
+    If you pass 3000 hard-coded to app.listen(), you're always listening on port 3000, which might be just for you, or not, depending on your requirements and the requirements of the environment in which you're running your server.
+
+
+    var port = process.env.port || 3000;
+
+    app.listen(port);
