@@ -27,6 +27,8 @@ app.use(bodyParser.json());
 
 mongoose.connect(config.connectUrl, () => console.log("DB Conneted"));
 
+//server static resources directly by specifying the folder name where you have stored your static resources.
+app.use(express.static("FilesDrive/"));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

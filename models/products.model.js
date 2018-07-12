@@ -18,9 +18,9 @@ module.exports = mongoose.model("products", {
     price: {
         type: Number,
         required: [true, "Price is required"],
-        validate: {
-            validator: priceValidator
-        }
+        // validate: {
+        //     validator: priceValidator
+        // }
     },
     inStock: {
         type: Boolean,

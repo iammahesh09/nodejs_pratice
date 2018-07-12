@@ -369,3 +369,10 @@ Files upload
         $ npm install --save multer
 
             Follow - https://www.npmjs.com/package/multer
+
+
+
+
+express.static()
+----------------
+    http://www.tutorialsteacher.com/nodejs/serving-static-files-in-nodejs

@@ -6,8 +6,19 @@ const productCtrl = {
     get: async (req, res) => {
 
         try{
-            let product = await productService.getProduct()
-            res.status(200).json(product)
+            let products = await productService.getProduct();
+            for(let i=0; i < products.length; i++){
+                let product = products[i];
+                if(product.model_image){
+
+                    //Option-1 -> product.model_image = "http://localhost:9001/"+product.model_image;
+                    //Option-2 -> product.model_image = product.model_image? "http://localhost:9001/"+product.model_image:"";
+                    //Option-3 -> product.model_image = product.model_image ? req.protocol + "://" + req.get('host') + "/" + product.model_image:"";
+                    product.model_image = product.model_image ? `${req.protocol}://${req.get('host')}/${product.model_image}` : "";
+                    
+                }
+            }
+            res.status(200).json(products)
         }
         catch(err){
             res.status(500).send("Internal Server Error")
