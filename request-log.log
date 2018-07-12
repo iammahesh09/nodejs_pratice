@@ -1,0 +1,7 @@
+
+{"ip":"::1","url":"/api/products/","method":"GET","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36","date":"2018-7-12 19:39:35","host":"localhost:9001","responseTime":"239ms","status":304}
+{"ip":"::1","url":"/api/products/","method":"GET","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36","date":"2018-7-12 19:45:47"}
+{"ip":"::1","url":"/api/products/","method":"GET","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134","date":"2018-7-12 19:46:29"}
+{"ip":"::1","url":"/api/products/","method":"GET","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36","date":"2018-7-12 19:48:56"}
+{"ip":"::1","url":"/api/products/5b473485f0ae6b0a3cdfef2a","method":"GET","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36","date":"2018-7-12 19:49:06"}
+{"ip":"::1","url":"/api/products/5b473485f0ae6b0a3cdfef2a","method":"GET","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36","date":"2018-7-12 19:49:49"}

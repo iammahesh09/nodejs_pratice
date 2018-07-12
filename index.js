@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const multer = require('multer')
+const trueLog = require('true-log');
 
 
 const app = express();
@@ -25,6 +26,14 @@ const reviewRouter = require('./routers/review.router');
 
 app.use(bodyParser.json());
 
+
+//True Log - An Http Request Logger
+let fs = require('fs');
+let ws = fs.createWriteStream(__dirname + "/request-log.log", { flags: 'a' });
+app.use(trueLog({level:'tiny',stream:ws}));
+
+
+
 mongoose.connect(config.connectUrl, () => console.log("DB Conneted"));
 
 //server static resources directly by specifying the folder name where you have stored your static resources.
@@ -39,8 +48,8 @@ const storage = multer.diskStorage({
         // this is upload file name change fieldname and date
         //cb(null, file.fieldname + '-' + Date.now())
 
-       // this is upload file original name
-       let file_name = Date.now()+'-'+file.originalname
+        // this is upload file original name
+        let file_name = Date.now() + '-' + file.originalname
         cb(null, file_name)
     }
 })

@@ -376,3 +376,39 @@ Files upload
 express.static()
 ----------------
     http://www.tutorialsteacher.com/nodejs/serving-static-files-in-nodejs
+
+
+
+True Log - An Http Request Logger
+---------------------------------
+    
+    npm install true-log --save
+
+        Follow : https://www.npmjs.com/package/true-log
+
+
+    //register it as a middleware
+        
+        app.use(trueLog());
+
+
+    Log Level
+    ---------
+        Tiny
+        ----
+            var trueLog = require('true-log');
+            app.use(trueLog({level:'tiny'}));
+            
+            #Logs: Client IP, Date, Method, Url, UserAgent
+
+        Full
+        ----
+            app.use(trueLog({level:'full'}));
+            
+            #Logs: Client IP, Date, Method, Url, UserAgent, Response Time and Status code
+
+
+        ## Logging to File By default logs would be written to console but you can redirect logs to a file by passing a writeable stream
+                var fs = require('fs')
+                var ws = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: 'a' });
+                app.use(trueLog({level:'full',stream:ws}));
