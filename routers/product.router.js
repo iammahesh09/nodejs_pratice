@@ -10,9 +10,13 @@ const storage = multer.diskStorage({
         cb(null, 'FilesDrive')
     },
     filename: function (req, file, cb) {
-        let file_name = Date.now() + '-' + file.originalname
-        req.body.model_image = file_name;
-        cb(null, file_name)
+        if (file.originalname.endsWith([".svg"])) {
+            cb("Svg file not allowed")
+        } else {
+            let file_name = Date.now() + '-' + file.originalname
+            req.body.model_image = file_name;
+            cb(null, file_name)
+        }
     }
 })
 
