@@ -14,7 +14,8 @@ const productCtrl = {
                     //Option-1 -> product.model_image = "http://localhost:9001/"+product.model_image;
                     //Option-2 -> product.model_image = product.model_image? "http://localhost:9001/"+product.model_image:"";
                     //Option-3 -> product.model_image = product.model_image ? req.protocol + "://" + req.get('host') + "/" + product.model_image:"";
-                    product.model_image = product.model_image ? `${req.protocol}://${req.get('host')}/${product.model_image}` : "";
+                    //Option-4 -> product.model_image = product.model_image ? `${req.protocol}://${req.get('host')}/${product.model_image}` : "";
+                    product.model_image = `${req.protocol}://${req.get('host')}/${product.model_image}`;
                     
                 }
             }
@@ -34,7 +35,7 @@ const productCtrl = {
             //immutable
             let jsonProduct = product.toJSON();
             jsonProduct.reviews=reviews;
- 
+            if(jsonProduct.model_image) jsonProduct.model_image = `${req.protocol}://${req.get('host')}/${jsonProduct.model_image}`;
             res.status(200);
             res.json(jsonProduct);
 
