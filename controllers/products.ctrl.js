@@ -88,7 +88,7 @@ const productCtrl = {
     patchData:async (req, res) => {
 
         let id = req.params.id;
-        delete req.params._id;
+        delete req.body._id;
         await productSvc.patch(id, req.body);
         res.status(204).send();
     }
