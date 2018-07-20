@@ -412,3 +412,11 @@ True Log - An Http Request Logger
                 var fs = require('fs')
                 var ws = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: 'a' });
                 app.use(trueLog({level:'full',stream:ws}));
+
+
+
+
+Review Avg Calculation - (Aggregation - MongoDB)
+------------------------------------------------
+
+    https://docs.mongodb.com/manual/aggregation/

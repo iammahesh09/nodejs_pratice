@@ -32,10 +32,19 @@ const productCtrl = {
             let id = req.params.id;
             let product = await productService.getProductId(id);
             let reviews = await reviewService.readReviews(id);
+
             //immutable
             let jsonProduct = product.toJSON();
+            
+            let rating = await reviewService.avgRating(id);
+            if(rating && rating.length > 0)
+                jsonProduct.avgRating = rating[0].avgRating;
+
             jsonProduct.reviews=reviews;
-            if(jsonProduct.model_image) jsonProduct.model_image = `${req.protocol}://${req.get('host')}/${jsonProduct.model_image}`;
+                
+            if(jsonProduct.model_image) 
+                jsonProduct.model_image = `${req.protocol}://${req.get('host')}/${jsonProduct.model_image}`;
+           
             res.status(200);
             res.json(jsonProduct);
 

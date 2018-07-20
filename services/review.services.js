@@ -24,6 +24,14 @@ class reviewService {
         return Review.findByIdAndRemove(id).exec();
     }
 
+    avgRating(id){
+        return Review.aggregate([
+                { $match : { productId:id } },
+                { $group : { _id : '$productId', avgRating : { $avg : '$rating' } } },
+                { $project : {_id:0}}
+            ]).exec()
+    }
+
 }
 
 module.exports = new reviewService();
