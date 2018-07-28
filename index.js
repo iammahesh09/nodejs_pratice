@@ -77,7 +77,7 @@ app.use('/api/users', userRouter)
 //app.use(middleware.basicAuthentication) // secure page 'productRouter'  only. if in case you have using 'defaultRouter' page upper, apply secure defaultRouter 
 
 //use call middleware
-//app.use(middleware.tokenAuth)
+app.use(middleware.tokenAuth)
 
 //Private
 app.use('/api/products', productRouter);
