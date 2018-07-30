@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config')
+var cors = require('cors')
 
 module.exports = {
     tokenAuth:function(req, res, next) {

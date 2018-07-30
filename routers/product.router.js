@@ -1,6 +1,6 @@
 const express = require('express')
 const multer = require('multer')
-
+var cors = require('cors')
 const routes = express.Router();
 
 var productsCtrl = require('../controllers/products.ctrl');
@@ -24,11 +24,11 @@ let upload = multer({
     storage: storage
 })
 
-routes.get('/', productsCtrl.get);
-routes.get('/:id', productsCtrl.getId);
-routes.post('/', upload.single('model_image'), productsCtrl.addProduct);
-routes.delete('/:id', productsCtrl.deleteProduct);
-routes.put('/:id', productsCtrl.updateProduct);
-routes.patch('/:id', productsCtrl.patchData);
+routes.get('/', cors(), productsCtrl.get);
+routes.get('/:id', cors(), productsCtrl.getId);
+routes.post('/', cors(), upload.single('model_image'), productsCtrl.addProduct);
+routes.delete('/:id', cors(), productsCtrl.deleteProduct);
+routes.put('/:id', cors(), productsCtrl.updateProduct);
+routes.patch('/:id', cors(), productsCtrl.patchData);
 
 module.exports = routes;

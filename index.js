@@ -1,5 +1,6 @@
 //This CommonJS pattren   (Angular -> ES6 Pattren)
 const express = require('express');
+var cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const multer = require('multer')
@@ -11,7 +12,7 @@ const config = require('./config')
 
 var defaultRouter = require('./routers/default.routes');
 var productRouter = require('./routers/product.router');
-
+app.use(cors())
 //Basic authorization
 //const middleware = require('./authorization/basicAuth')
 
