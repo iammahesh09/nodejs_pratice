@@ -11,8 +11,8 @@ module.exports = {
                 res.status(400);
                 res.send("Unauthorised")
             } else {
-                res.header("Access-Control-Allow-Origin", "*");
-                res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                //res.header("Access-Control-Allow-Origin", "*");
+                //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
                 next();
             }
         })
