@@ -9,13 +9,14 @@ const productCtrl = {
             let products = await productService.getProduct();
             for(let i=0; i < products.length; i++){
                 let product = products[i];
-                if(product.model_image){
+                if(product.modelImage){
 
-                    //Option-1 -> product.model_image = "http://localhost:9001/"+product.model_image;
-                    //Option-2 -> product.model_image = product.model_image? "http://localhost:9001/"+product.model_image:"";
-                    //Option-3 -> product.model_image = product.model_image ? req.protocol + "://" + req.get('host') + "/" + product.model_image:"";
-                    //Option-4 -> product.model_image = product.model_image ? `${req.protocol}://${req.get('host')}/${product.model_image}` : "";
-                    product.model_image = `${req.protocol}://${req.get('host')}/${product.model_image}`;
+                    //Option-1 -> product.modelImage = "http://localhost:9001/"+product.modelImage;
+                    //Option-2 -> product.modelImage = product.modelImage? "http://localhost:9001/"+product.modelImage:"";
+                    //Option-3 -> product.modelImage = product.modelImage ? req.protocol + "://" + req.get('host') + "/" + product.modelImage:"";
+                    //Option-4 -> product.modelImage = product.modelImage ? `${req.protocol}://${req.get('host')}/${product.modelImage}` : "";
+                    //Option-5 -> product.modelImage = `${req.protocol}://${req.get('host')}/${product.modelImage}`;
+                    product.modelImage = `${req.protocol}://${req.get('host')}/${product.modelImage}`;
                     
                 }
             }
@@ -41,10 +42,10 @@ const productCtrl = {
                 jsonProduct.avgRating = rating[0].avgRating;
 
             jsonProduct.reviews=reviews;
-                
-            if(jsonProduct.model_image) 
-                jsonProduct.model_image = `${req.protocol}://${req.get('host')}/${jsonProduct.model_image}`;
-           
+
+            if(jsonProduct.modelImage) 
+                jsonProduct.modelImage = `${req.protocol}://${req.get('host')}/${jsonProduct.modelImage}`;
+
             res.status(200);
             res.json(jsonProduct);
 

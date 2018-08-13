@@ -30,7 +30,7 @@ module.exports = mongoose.model("products", {
         type: Date,
         default: Date.now
     },
-    model_image:{
+    modelImage:{
         type: String
     }
 })

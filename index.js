@@ -48,9 +48,9 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         // this is upload file name change fieldname and date
         //cb(null, file.fieldname + '-' + Date.now())
-
+        
         // this is upload file original name
-        let file_name = Date.now() + '-' + file.originalname
+        let file_name = Date.now() + '-' + file.originalname;
         cb(null, file_name)
     }
 })

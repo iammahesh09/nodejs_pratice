@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
             cb("Svg file not allowed")
         } else {
             let file_name = Date.now() + '-' + file.originalname
-            req.body.model_image = file_name;
+            req.body.modelImage = file_name;
             cb(null, file_name)
         }
     }
@@ -26,7 +26,7 @@ let upload = multer({
 
 routes.get('/', cors(), productsCtrl.get);
 routes.get('/:id', cors(), productsCtrl.getId);
-routes.post('/', cors(), upload.single('model_image'), productsCtrl.addProduct);
+routes.post('/', cors(), upload.single('modelImage'), productsCtrl.addProduct);
 routes.delete('/:id', cors(), productsCtrl.deleteProduct);
 routes.put('/:id', cors(), productsCtrl.updateProduct);
 routes.patch('/:id', cors(), productsCtrl.patchData);
